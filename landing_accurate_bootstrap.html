@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panduan Accurate per Divisi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #f9f9f9; }
+    section { margin-top: 3rem; }
+    .fade-in { animation: fadeIn 1s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="bg-primary text-white text-center py-4 fade-in">
+  <h1 class="mb-0">Panduan Penggunaan Accurate</h1>
+  <p class="lead">Temukan panduan sesuai kebutuhan divisi Anda</p>
+</header>
+
+<div class="container mt-4">
+  <input type="text" id="searchInput" class="form-control mb-3" placeholder="Cari panduan...">
+  
+  <nav class="nav justify-content-center flex-wrap mb-4">
+    <a class="nav-link" href="#gudang">📦 Gudang</a>
+    <a class="nav-link" href="#keuangan">📊 Keuangan</a>
+    <a class="nav-link" href="#penjualan">🧾 Penjualan</a>
+    <a class="nav-link" href="#hr">👥 HR</a>
+    <a class="nav-link" href="#produksi">⚙️ Produksi</a>
+    <a class="nav-link" href="#laporan">📈 Laporan</a>
+  </nav>
+
+  <div id="content">
+    <section id="gudang" class="fade-in">
+      <h2>📦 Gudang & Inventory</h2>
+      <ul>
+        <li>Menambah dan mengelola item barang</li>
+        <li>Pengaturan gudang dan lokasi penyimpanan</li>
+        <li>Stok opname dan penyesuaian stok</li>
+      </ul>
+    </section>
+
+    <section id="keuangan" class="fade-in">
+      <h2>📊 Keuangan & Akuntansi</h2>
+      <ul>
+        <li>Pengaturan akun dan chart of account</li>
+        <li>Pencatatan jurnal umum</li>
+        <li>Rekonsiliasi bank</li>
+      </ul>
+    </section>
+
+    <section id="penjualan" class="fade-in">
+      <h2>🧾 Penjualan & Pembelian</h2>
+      <ul>
+        <li>Input penawaran & faktur penjualan</li>
+        <li>Pembayaran & retur penjualan</li>
+        <li>Proses pembelian dan pembayaran supplier</li>
+      </ul>
+    </section>
+
+    <section id="hr" class="fade-in">
+      <h2>👥 HR & Gaji</h2>
+      <ul>
+        <li>Menambah karyawan</li>
+        <li>Pengaturan gaji dan tunjangan</li>
+        <li>Proses penggajian dan slip gaji</li>
+      </ul>
+    </section>
+
+    <section id="produksi" class="fade-in">
+      <h2>⚙️ Produksi</h2>
+      <ul>
+        <li>Membuat BOM (Bill of Material)</li>
+        <li>Proses produksi dan work order</li>
+        <li>Biaya produksi dan hasil produksi</li>
+      </ul>
+    </section>
+
+    <section id="laporan" class="fade-in">
+      <h2>📈 Laporan & Manajemen</h2>
+      <ul>
+        <li>Membaca laporan keuangan</li>
+        <li>Laporan penjualan dan pembelian</li>
+        <li>Analisis profit & loss</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer class="text-center py-4 mt-5 bg-light">
+    <p>Created by Imah08</p>
+  </footer>
+</div>
+
+<script>
+  // Fitur pencarian
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const filter = this.value.toLowerCase();
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      const text = section.textContent.toLowerCase();
+      section.style.display = text.includes(filter) ? '' : 'none';
+    });
+  });
+</script>
+
+</body>
+</html>
