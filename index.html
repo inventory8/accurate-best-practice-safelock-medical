@@ -29,6 +29,7 @@
   <input type="text" id="searchInput" class="form-control mb-3" placeholder="Cari panduan...">
   
   <nav class="nav justify-content-center flex-wrap mb-4">
+    <a class="nav-link" href="#glosarium">Glosarium</a>
     <a class="nav-link" href="#gudang">📦 Gudang</a>
     <a class="nav-link" href="#keuangan">📊 Keuangan</a>
     <a class="nav-link" href="#penjualan">🧾 Penjualan</a>
@@ -40,6 +41,23 @@
   <div id="content">
     <div class="accordion fade-in" id="accordionGuide">
 
+      <div class="accordion-item" id="glosarium">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGlosarium">
+            Glosarium
+          </button>
+        </h2>
+        <div id="collapseGlosarium" class="accordion-collapse collapse" data-bs-parent="#accordionGuide">
+          <div class="accordion-body">
+            <ul>
+              <li>Daftar Kode Barang</li>
+              <li>Ketentuan Penulisan Lot</li>
+              <li>Ketentuan Nomor # Semua Divisi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
       <div class="accordion-item" id="gudang">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGudang">
