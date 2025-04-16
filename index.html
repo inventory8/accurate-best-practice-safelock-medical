@@ -4,20 +4,112 @@
   <meta charset="UTF-8">
   <title>Landing Page Accurate</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="p-4">
-  <h1>📘 Glosarium</h1>
-  <ul>
-    <li><a href="glosarium-kode-barang.html">Daftar Kode Barang</a></li>
-    <li><a href="glosarium-lot.html">Ketentuan Penulisan Lot</a></li>
-    <li><a href="glosarium-nomor-divisi.html">Ketentuan Nomor # Semua Divisi</a></li>
-  </ul>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+<style>
+  body {
+    transition: background-color 0.3s ease;
+  }
+  .glossary-link {
+    transition: transform 0.2s ease;
+  }
+  .glossary-link:hover {
+    transform: scale(1.03);
+    text-decoration: underline;
+  }
+</style>
 
-  <h2>📦 Gudang & Inventory</h2>
-  <ul>
-    <li><a href="panduan-gudang-item.html">Menambah dan mengelola item barang</a></li>
-    <li><a href="panduan-gudang-gudang.html">Pengaturan gudang dan lokasi penyimpanan</a></li>
-    <li><a href="panduan-gudang-stok.html">Stok opname dan penyesuaian stok</a></li>
-  </ul>
+  <script>
+    function searchFunction() {
+      var input, filter, accordionItems, links, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toLowerCase();
+      accordionItems = document.querySelectorAll(".accordion-item");
+      
+      accordionItems.forEach(item => {
+        links = item.querySelectorAll(".list-group-item");
+        let found = false;
+        links.forEach(link => {
+          txtValue = link.textContent || link.innerText;
+          if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            link.style.display = "";
+            found = true;
+          } else {
+            link.style.display = "none";
+          }
+        });
+        item.style.display = found ? "block" : "none";
+      });
+    }
+  </script>
+</head>
+<body class="bg-light text-dark p-4">
+  <div class="container">
+    <h1 class="mb-4">Panduan Accurate per Divisi</h1>
+
+    <!-- Pencarian Interaktif -->
+    <input type="text" id="searchInput" onkeyup="searchFunction()" class="form-control mb-4" placeholder="Cari panduan...">
+
+    <!-- Glosarium Dropdown -->
+    <div class="accordion" id="glosariumAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingGlosarium">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGlosarium" aria-expanded="true" aria-controls="collapseGlosarium">
+            📘 Glosarium
+          </button>
+        </h2>
+        <div id="collapseGlosarium" class="accordion-collapse collapse show" aria-labelledby="headingGlosarium" data-bs-parent="#glosariumAccordion">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <a href="glosarium-kode-barang.html" class="list-group-item list-group-item-action glossary-link">📦 Daftar Kode Barang</a>
+              <a href="glosarium-lot.html" class="list-group-item list-group-item-action glossary-link">✍️ Ketentuan Penulisan Lot</a>
+              <a href="glosarium-nomor-divisi.html" class="list-group-item list-group-item-action glossary-link">🔢 Ketentuan Nomor # Semua Divisi</a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gudang & Inventory Dropdown -->
+    <div class="accordion mt-4" id="gudangAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingGudang">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGudang" aria-expanded="true" aria-controls="collapseGudang">
+            📦 Gudang & Inventory
+          </button>
+        </h2>
+        <div id="collapseGudang" class="accordion-collapse collapse" aria-labelledby="headingGudang" data-bs-parent="#gudangAccordion">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <a href="gudang-pemindahan-barang.html" class="list-group-item list-group-item-action glossary-link">🔄 Pemindahan Barang</a>
+              <a href="gudang-penerimaan-barang.html" class="list-group-item list-group-item-action glossary-link">📦 Penerimaan Barang</a>
+              <a href="gudang-pengambilan-bahan-baku.html" class="list-group-item list-group-item-action glossary-link">🍞 Pengambilan Bahan Baku</a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produksi Dropdown -->
+    <div class="accordion mt-4" id="produksiAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingProduksi">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProduksi" aria-expanded="true" aria-controls="collapseProduksi">
+            🏭 Produksi
+          </button>
+        </h2>
+        <div id="collapseProduksi" class="accordion-collapse collapse" aria-labelledby="headingProduksi" data-bs-parent="#produksiAccordion">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <a href="produksi-permintaan-barang.html" class="list-group-item list-group-item-action glossary-link">📑 Permintaan Barang</a>
+              <a href="produksi-tahapan-proses.html" class="list-group-item list-group-item-action glossary-link">🔧 Tahapan Proses</a>
+              <a href="produksi-penyelesaian-barang-jadi.html" class="list-group-item list-group-item-action glossary-link">🏁 Penyelesaian Barang Jadi</a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
