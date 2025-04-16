@@ -1,29 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Daftar Kode Barang - Glosarium Accurate</title>
+  <title>Daftar Kode Barang</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-<style>
-  body {
-    transition: background-color 0.3s ease;
-  }
-  .glossary-link {
-    transition: transform 0.2s ease;
-  }
-  .glossary-link:hover {
-    transform: scale(1.03);
-    text-decoration: underline;
-  }
-</style>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .search-input { margin-bottom: 1rem; }
+  </style>
 </head>
 <body class="bg-light text-dark p-4">
   <div class="container">
-    <h1 class="mb-3">Daftar Kode Barang</h1>
-    <p class="lead">Ini adalah informasi mengenai <strong>Daftar Kode Barang</strong> untuk referensi penggunaan Accurate.</p>
-    <a href="index.html" class="btn btn-outline-primary mt-3">← Kembali ke Glosarium</a>
+    <h1 class="mb-4">📦 Daftar Kode Barang</h1>
+
+    <h3 class="mt-5">🔧 Produk WIP (Work In Process)</h3>
+    <div class="accordion" id="wipAccordion">
+
+      <!-- Function to generate WIP sections -->
+      
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingWIP">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWIP" aria-expanded="false" aria-controls="collapseWIP">
+          🧱 WIP
+        </button>
+      </h2>
+      <div id="collapseWIP" class="accordion-collapse collapse" aria-labelledby="headingWIP" data-bs-parent="#wipAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchWIP" class="form-control search-input" onkeyup="filterTable('searchWIP', 'tableWIP')" placeholder="Cari di WIP">
+          <table id="tableWIP" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+              <!-- Tambahkan baris WIP di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingWIP1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWIP1" aria-expanded="false" aria-controls="collapseWIP1">
+          🧱 WIP1
+        </button>
+      </h2>
+      <div id="collapseWIP1" class="accordion-collapse collapse" aria-labelledby="headingWIP1" data-bs-parent="#wipAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchWIP1" class="form-control search-input" onkeyup="filterTable('searchWIP1', 'tableWIP1')" placeholder="Cari di WIP1">
+          <table id="tableWIP1" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+              <!-- Tambahkan baris WIP1 di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingWIP2">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWIP2" aria-expanded="false" aria-controls="collapseWIP2">
+          🧱 WIP2
+        </button>
+      </h2>
+      <div id="collapseWIP2" class="accordion-collapse collapse" aria-labelledby="headingWIP2" data-bs-parent="#wipAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchWIP2" class="form-control search-input" onkeyup="filterTable('searchWIP2', 'tableWIP2')" placeholder="Cari di WIP2">
+          <table id="tableWIP2" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+              <!-- Tambahkan baris WIP2 di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+
+    </div>
+
+    <h3 class="mt-5">✅ Produk FG (Finished Goods)</h3>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Kode</th>
+          <th>Nama Barang</th>
+          <th>Brand</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Tambahkan baris FG di sini -->
+      </tbody>
+    </table>
   </div>
+
+  <script>
+    function filterTable(inputId, tableId) {
+      const input = document.getElementById(inputId);
+      const filter = input.value.toLowerCase();
+      const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    }
+  </script>
 </body>
 </html>
