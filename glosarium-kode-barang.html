@@ -329,6 +329,116 @@
         </div>
       </div>
     </div>
+
+    <h3 class="mt-5">🔧 PC (Packaging)</h3>
+    <div class="accordion" id="pcAccordion">
+
+      <!-- Function to generate PC sections -->
+      
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPCBF">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePCBF" aria-expanded="false" aria-controls="collapsePCBF">
+          📦 PCBF (Blister Film)
+        </button>
+      </h2>
+      <div id="collapsePCBF" class="accordion-collapse collapse" aria-labelledby="headingPCBF" data-bs-parent="#pcAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchPCBF" class="form-control search-input" onkeyup="filterTable('searchPCBF', 'tablePCBF')" placeholder="Cari di PCBF">
+          <table id="tablePCBF" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+             <!-- Tambahkan baris FG Export di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPCIB">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePCIB" aria-expanded="false" aria-controls="collapsePCIB">
+          📦 PCIB (Inner Box)
+        </button>
+      </h2>
+      <div id="collapsePCIB" class="accordion-collapse collapse" aria-labelledby="headingPCIB" data-bs-parent="#pcAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchPCIB" class="form-control search-input" onkeyup="filterTable('searchPCIB', 'tablePCIB')" placeholder="Cari di PCIB">
+          <table id="tablePCIB" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+             <!-- Tambahkan baris FG Export di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPCIK">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePCIK" aria-expanded="false" aria-controls="collapsePCIK">
+          📦 PCIK (Inner Karton)
+        </button>
+      </h2>
+      <div id="collapsePCIK" class="accordion-collapse collapse" aria-labelledby="headingPCIK" data-bs-parent="#pcAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchPCIK" class="form-control search-input" onkeyup="filterTable('searchPCIK', 'tablePCIK')" placeholder="Cari di PCIK">
+          <table id="tablePCIK" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+             <!-- Tambahkan baris FG Export di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+      
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPCKB">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePCKB" aria-expanded="false" aria-controls="collapsePCKB">
+          📦 PCKB (Karton Box)
+        </button>
+      </h2>
+      <div id="collapsePCKB" class="accordion-collapse collapse" aria-labelledby="headingPCKB" data-bs-parent="#pcAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchPCKB" class="form-control search-input" onkeyup="filterTable('searchPCKB', 'tablePCKB')" placeholder="Cari di PCKB">
+          <table id="tablePCKB" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+             <!-- Tambahkan baris FG Export di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPCPP">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePCPP" aria-expanded="false" aria-controls="collapsePCPP">
+          📦 PCPP (Pouch dan Polybag)
+        </button>
+      </h2>
+      <div id="collapsePCPP" class="accordion-collapse collapse" aria-labelledby="headingPCPP" data-bs-parent="#pcAccordion">
+        <div class="accordion-body p-0">
+          <input type="text" id="searchPCPP" class="form-control search-input" onkeyup="filterTable('searchPCPP', 'tablePCPP')" placeholder="Cari di PCPP">
+          <table id="tablePCPP" class="table mb-0">
+            <thead class="table-light">
+              <tr><th>Kode</th><th>Nama Barang</th></tr>
+            </thead>
+            <tbody>
+             <!-- Tambahkan baris FG Export di sini -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
       
     <h3 class="mt-5">🔧 FG (Finished Goods)</h3>
     <div class="accordion" id="fgAccordion">
@@ -725,7 +835,32 @@
               <tr><th>Kode</th><th>Nama Barang</th></tr>
             </thead>
             <tbody>
-             <!-- Tambahkan baris RERM di sini -->
+             <tr><td>RERM0001</td><td>Crushing ABS Hi121H Natural</td></tr>
+             <tr><td>RERM0002</td><td>Crushing MABS TR580</td></tr>
+             <tr><td>RERM0003</td><td>Crushing PP ELPRO</td></tr>
+             <tr><td>RERM0004</td><td>Crushing PP H1 10 H0</td></tr>
+             <tr><td>RERM0005</td><td>Crushing PP HYOSUNG J-801 (IV Cath)</td></tr>
+             <tr><td>RERM0008</td><td>Crushing LDPE</td></tr>
+             <tr><td>RERM0009</td><td>Crushing HDPE 5218EA</td></tr>
+             <tr><td>RERM0010</td><td>Crushing K RESIN KR-01 (IV Cath)</td></tr>
+             <tr><td>RERM0011</td><td>Crushing GPPS 147F (IV Cath)</td></tr>
+             <tr><td>RERM0012</td><td>Crushing KTR/ELASTOMER</td></tr>
+             <tr><td>RERM0013</td><td>Crushing PVC MES010A/MU001 (Tube DEHP)</td></tr>
+             <tr><td>RERM0014</td><td>Crushing PVC MES010A/MU014 (SCT / Bluish)</td></tr>
+             <tr><td>RERM0015</td><td>Crushing PVC MES001A/MH001 (Green Clear)</td></tr>
+             <tr><td>RERM0016</td><td>Crushing PVC MES001A/MU001 (Tube Clear)</td></tr>
+             <tr><td>RERM0017</td><td>Crushing PVC MES039B/00000 (Tube JSM)</td></tr>
+             <tr><td>RERM0018</td><td>Crushing PVC MJS033A/00000 (Tube Set Connector 2000mm)</td></tr>
+             <tr><td>RERM0019</td><td>Crushing PVC MJS035A/MU006 (Conector SCT / Blue Clear)</td></tr>
+             <tr><td>RERM0020</td><td>Crushing PVC MJS034A/MH001 (O2 Mask / Green Clear)</td></tr>
+             <tr><td>RERM0021</td><td>Crushing PVC MJS034C/MH001 (O2 Mask Dawhomed / Green Clear)</td></tr>
+             <tr><td>RERM0022</td><td>Crushing PVC MJS030A/00000 (Chamber Non DEHP)</td></tr>
+             <tr><td>RERM0023</td><td>Crushing PVC MJS030B (Sample Chamber Non DEHP)</td></tr>
+             <tr><td>RERM0024</td><td>Crushing PVC MJS006A/00000 (Connetor Urine)</td></tr>
+             <tr><td>RERM0025</td><td>Crushing SHE4800 BT01 / 9511541 (Tube DEHP)</td></tr>
+             <tr><td>RERM0026</td><td>Crushing SHE4800 VT7062 (SCT / Bluish)</td></tr>
+             <tr><td>RERM0027</td><td>Crushing SHE5800 ET (Green Clear)</td></tr>
+             <tr><td>RERM0028</td><td>Crushing SHM2000A BT7004 / 9509922</td></tr>
             </tbody>
           </table>
         </div>
