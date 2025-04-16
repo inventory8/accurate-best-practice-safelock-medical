@@ -39,4 +39,3 @@ https://imah08.github.io/accurate-guide/
 ---
 
 📌 **Credits:** dibuat dengan ❤️ oleh **Imah08**
-
