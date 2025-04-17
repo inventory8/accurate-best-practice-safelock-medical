@@ -9,35 +9,11 @@
   <style>
     .search-input { margin-bottom: 1rem; }
   </style>
-    <script>
-    function searchFunction() {
-      var input, filter, accordionItems, links, i, txtValue;
-      input = document.getElementById("searchInput");
-      filter = input.value.toLowerCase();
-      accordionItems = document.querySelectorAll(".accordion-item");
-      
-      accordionItems.forEach(item => {
-        links = item.querySelectorAll(".list-group-item");
-        let found = false;
-        links.forEach(link => {
-          txtValue = link.textContent || link.innerText;
-          if (txtValue.toLowerCase().indexOf(filter) > -1) {
-            link.style.display = "";
-            found = true;
-          } else {
-            link.style.display = "none";
-          }
-        });
-        item.style.display = found ? "block" : "none";
-      });
-    }
-  </script>
 </head>
 <body class="bg-light text-dark p-4">
   <div class="container">
     <h1 class="mb-4">📦 Daftar Kode Barang</h1>
     
-    <input type="text" id="searchInput" onkeyup="searchFunction()" class="form-control mb-4" placeholder="Cari kode/barang...">
     <h3 class="mt-5">🏭 WIP (Work In Process)</h3>
     <div class="accordion" id="wipAccordion">
 
