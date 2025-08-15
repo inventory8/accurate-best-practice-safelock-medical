@@ -3,65 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Format Kode Produksi (WIP-AA-BB-CC[-J])</title>
+  <title>Format Nomor Lot Produksi - Generator</title>
+
+  <!-- Bootstrap (opsional tapi bikin tampilan rapi) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    :root{
-      --seg-x:#4a90e2;      /* biru */
-      --seg-a:#f5a267;      /* oranye */
-      --seg-b:#f4d35e;      /* kuning */
-      --seg-c:#82c878;      /* hijau */
-      --seg-j:#bfc5cf;      /* abu */
-    }
-    body{background:#f7f8fb}
-    .code-tape{display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center}
-    .seg{
-      min-width:64px; height:48px; border-radius:.75rem; color:#fff; font-weight:700;
-      display:flex; align-items:center; justify-content:center; letter-spacing:.5px;
-      box-shadow:0 4px 12px rgba(0,0,0,.08);
-    }
-    .seg.x{background:var(--seg-x)}
-    .seg.a{background:var(--seg-a)}
-    .seg.b{background:var(--seg-b); color:#222}
-    .seg.c{background:var(--seg-c)}
-    .seg.j{background:var(--seg-j); color:#222}
-    .legend td:first-child{white-space:nowrap; font-weight:600}
-    .code-output{font-family:ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
-    .hint{font-size:.9rem; color:#6c757d}
-    .kbd{padding:.15rem .35rem; border:1px solid #dee2e6; background:#fff;border-radius:.35rem}
+    body { background:#f7f8fb; }
+    .seg { min-width:64px; height:48px; border-radius:.75rem; color:#fff; font-weight:700;
+           display:flex; align-items:center; justify-content:center; letter-spacing:.5px;
+           box-shadow:0 4px 12px rgba(0,0,0,.08); }
+    .code-tape { display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center }
+    .seg-x{ background:#4a90e2 } /* X */
+    .seg-a{ background:#f5a267 } /* AA */
+    .seg-b{ background:#f4d35e; color:#222 } /* BB */
+    .seg-c{ background:#82c878 } /* CC */
+    .seg-j{ background:#bfc5cf; color:#222 } /* -J */
+    .code-output{ font-family: ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; }
+    .copy-badge{ font-size:.85rem; }
+    .btn-back-wrap{ display:flex; justify-content:center; margin:40px 0; }
   </style>
 </head>
 <body class="py-4">
   <div class="container">
     <div class="row justify-content-center mb-4">
       <div class="col-lg-10">
-        <h1 class="h3 fw-bold text-center mb-3">Format Kode Produksi</h1>
-        <p class="text-center text-muted mb-4">Struktur: <strong>X AA BB CC</strong><span class="text-muted">[ -J ]</span></p>
+
+        <header class="text-center mb-3">
+          <h1 class="h3 fw-bold">Format Kode Produksi</h1>
+          <p class="text-muted mb-0">Struktur: <strong>X</strong> + <strong>AA</strong> + <strong>BB</strong> + <strong>CC</strong> <span class="text-muted">[ + <strong>-J</strong> opsional ]</span></p>
+        </header>
 
         <!-- Visual strip -->
         <div class="code-tape mb-4">
-          <div class="seg x">X</div>
-          <div class="seg a">A</div>
-          <div class="seg a">A</div>
-          <div class="seg b">B</div>
-          <div class="seg b">B</div>
-          <div class="seg c">C</div>
-          <div class="seg c">C</div>
-          <div class="seg j">-J</div>
+          <div class="seg seg-x">X</div>
+          <div class="seg seg-a">A</div>
+          <div class="seg seg-a">A</div>
+          <div class="seg seg-b">B</div>
+          <div class="seg seg-b">B</div>
+          <div class="seg seg-c">C</div>
+          <div class="seg seg-c">C</div>
+          <div class="seg seg-j">-J</div>
         </div>
 
-        <!-- Legend -->
+        <!-- Keterangan -->
         <div class="card shadow-sm mb-4">
           <div class="card-body">
-            <h2 class="h5 mb-3">Keterangan</h2>
+            <h2 class="h5 mb-3">Keterangan Struktur</h2>
             <div class="table-responsive">
-              <table class="table table-sm legend align-middle mb-0">
+              <table class="table table-sm align-middle mb-0">
                 <tbody>
-                  <tr><td>X</td><td>Kode produksi barang (misal: <span class="code-output">WIP0001</span>)</td></tr>
-                  <tr><td>AA</td><td>Kode tahun produksi (2 digit akhir tahun)</td></tr>
-                  <tr><td>BB</td><td>Kode bulan produksi (2 digit bulan)</td></tr>
-                  <tr><td>CC</td><td>Kode tanggal produksi (2 digit tanggal)</td></tr>
-                  <tr><td>-J</td><td>Opsional: akhiran lokasi <strong>Jepara</strong></td></tr>
+                  <tr><td class="fw-semibold" style="white-space:nowrap;">X</td><td>Kode barang/produk (misal: <span class="code-output">WIP0001</span>)</td></tr>
+                  <tr><td class="fw-semibold">AA</td><td>2 digit tahun (YY)</td></tr>
+                  <tr><td class="fw-semibold">BB</td><td>2 digit bulan (MM)</td></tr>
+                  <tr><td class="fw-semibold">CC</td><td>2 digit tanggal (DD)</td></tr>
+                  <tr><td class="fw-semibold">-J</td><td>Opsional: suffix lokasi Jepara</td></tr>
                 </tbody>
               </table>
             </div>
@@ -72,14 +67,14 @@
         <div class="card shadow-sm mb-4">
           <div class="card-body">
             <h2 class="h5 mb-3">Pembuat Kode Otomatis</h2>
-            <form class="row g-3" onsubmit="event.preventDefault(); buildCode();">
+            <form id="genForm" class="row g-3">
               <div class="col-md-6">
                 <label for="prodCode" class="form-label">Kode Barang (X)</label>
-                <input type="text" id="prodCode" class="form-control" placeholder="contoh: WIP0001" required>
+                <input type="text" id="prodCode" class="form-control" placeholder="contoh: WIP0001" required />
               </div>
               <div class="col-md-6">
                 <label for="prodDate" class="form-label">Tanggal Produksi</label>
-                <input type="date" id="prodDate" class="form-control" required>
+                <input type="date" id="prodDate" class="form-control" required />
               </div>
               <div class="col-md-6">
                 <label for="lokasi" class="form-label">Lokasi</label>
@@ -88,64 +83,84 @@
                   <option value="-J">Jepara (tambah -J)</option>
                 </select>
               </div>
-              <div class="col-md-6 d-flex align-items-end">
-                <button type="submit" class="btn btn-primary">Generate</button>
-                <button type="button" class="btn btn-outline-secondary ms-2" onclick="copyOut()">Copy</button>
+              <div class="col-md-6 d-flex align-items-end gap-2">
+                <button type="submit" id="btnGenerate" class="btn btn-primary">Generate</button>
+                <button type="button" id="btnCopy" class="btn btn-outline-secondary" disabled>Copy</button>
               </div>
             </form>
+
             <div class="mt-3">
-              <div class="hint mb-1">Hasil kode:</div>
+              <div class="text-muted mb-1">Hasil kode:</div>
               <div id="outCode" class="code-output fs-5 border rounded p-2 bg-light">—</div>
+              <span id="copyNote" class="text-success copy-badge d-none">✔ Disalin ke clipboard</span>
             </div>
           </div>
         </div>
 
-        <!-- Examples -->
+        <!-- Contoh -->
         <div class="card shadow-sm">
           <div class="card-body">
             <h2 class="h5 mb-3">Contoh Penulisan</h2>
             <p class="mb-2">Hasil produksi <em>Spike Cover Air Vent</em> pada <strong>16 Oktober 2024</strong>:</p>
             <ul class="mb-0">
-              <li>Klaten: <span class="code-output">WIP0001<span class="text-muted">24 10 16</span></span> → <span class="code-output">WIP0001241016</span></li>
+              <li>Klaten: <span class="code-output">WIP0001241016</span></li>
               <li>Jepara: <span class="code-output">WIP0001241016-J</span></li>
             </ul>
           </div>
         </div>
 
+        <!-- Tombol kembali -->
+        <div class="btn-back-wrap">
+          <a href="glosarium.html" class="btn btn-outline-primary mt-3">⬅ Kembali ke Glosarium</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script>
-    function pad2(n){return n.toString().padStart(2,'0')}
-    function buildCode(){
-      const x = (document.getElementById('prodCode').value || '').trim();
-      const d = document.getElementById('prodDate').value;
-      const suf = document.getElementById('lokasi').value || '';
-      if(!x || !d){ document.getElementById('outCode').textContent = 'Lengkapi data'; return; }
-      const dt = new Date(d);
+    // Helper
+    const pad2 = n => n.toString().padStart(2,'0');
+
+    function buildCode(x, dateStr, suffix) {
+      if (!x || !dateStr) return "";
+      const dt = new Date(dateStr);
+      if (isNaN(dt)) return "";
       const yy = pad2(dt.getFullYear() % 100);
-      const mm = pad2(dt.getMonth()+1);
+      const mm = pad2(dt.getMonth() + 1);
       const dd = pad2(dt.getDate());
-      const code = `${x}${yy}${mm}${dd}${suf}`;
-      document.getElementById('outCode').textContent = code;
+      return `${x.trim()}${yy}${mm}${dd}${suffix || ""}`;
     }
-    function copyOut(){
-      const el = document.getElementById('outCode');
-      const text = el.textContent.trim();
-      if(!text || text==='—'){return}
-      navigator.clipboard.writeText(text).then(()=>{
-        el.classList.add('border-success');
-        setTimeout(()=>el.classList.remove('border-success'), 800);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("genForm");
+      const out = document.getElementById("outCode");
+      const btnCopy = document.getElementById("btnCopy");
+      const copyNote = document.getElementById("copyNote");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const x = document.getElementById("prodCode").value;
+        const d = document.getElementById("prodDate").value;
+        const s = document.getElementById("lokasi").value;
+        const code = buildCode(x, d, s);
+        out.textContent = code || "Lengkapi data";
+        btnCopy.disabled = !code;
+        copyNote.classList.add("d-none");
       });
-    }
-<script>
-    function filterTable(inputId, tableId) {
-      const input = document.getElementById(inputId);
-      const filter = input.value.toLowerCase();
-      const rows = document.querySelectorAll(`#${tableId} tbody tr`);
-      rows.forEach(row => {
-        const text = row.innerText.toLowerCase();
-        row.style.display = text.includes(filter) ? '' : 'none';
+
+      btnCopy.addEventListener("click", async () => {
+        const text = (out.textContent || "").trim();
+        if (!text || text === "—" || text === "Lengkapi data") return;
+        try {
+          await navigator.clipboard.writeText(text);
+          copyNote.classList.remove("d-none");
+          setTimeout(() => copyNote.classList.add("d-none"), 1200);
+        } catch (err) {
+          alert("Gagal menyalin. Silakan salin manual.");
+        }
       });
-    }
+    });
   </script>
-       <a href="index.html" class="btn btn-outline-primary mt-4">← Kembali ke Glosarium</a>
 </body>
 </html>
