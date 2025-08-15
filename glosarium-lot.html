@@ -1,29 +1,145 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Ketentuan Penulisan Lot - Glosarium Accurate</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-<style>
-  body {
-    transition: background-color 0.3s ease;
-  }
-  .glossary-link {
-    transition: transform 0.2s ease;
-  }
-  .glossary-link:hover {
-    transform: scale(1.03);
-    text-decoration: underline;
-  }
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Format Kode Produksi (WIP-AA-BB-CC[-J])</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root{
+      --seg-x:#4a90e2;      /* biru */
+      --seg-a:#f5a267;      /* oranye */
+      --seg-b:#f4d35e;      /* kuning */
+      --seg-c:#82c878;      /* hijau */
+      --seg-j:#bfc5cf;      /* abu */
+    }
+    body{background:#f7f8fb}
+    .code-tape{display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center}
+    .seg{
+      min-width:64px; height:48px; border-radius:.75rem; color:#fff; font-weight:700;
+      display:flex; align-items:center; justify-content:center; letter-spacing:.5px;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+    .seg.x{background:var(--seg-x)}
+    .seg.a{background:var(--seg-a)}
+    .seg.b{background:var(--seg-b); color:#222}
+    .seg.c{background:var(--seg-c)}
+    .seg.j{background:var(--seg-j); color:#222}
+    .legend td:first-child{white-space:nowrap; font-weight:600}
+    .code-output{font-family:ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+    .hint{font-size:.9rem; color:#6c757d}
+    .kbd{padding:.15rem .35rem; border:1px solid #dee2e6; background:#fff;border-radius:.35rem}
+  </style>
 </head>
-<body class="bg-light text-dark p-4">
+<body class="py-4">
   <div class="container">
-    <h1 class="mb-3">Ketentuan Penulisan Lot</h1>
-    <p class="lead">Ini adalah informasi mengenai <strong>Ketentuan Penulisan Lot</strong> untuk referensi penggunaan Accurate.</p>
-    <a href="index.html" class="btn btn-outline-primary mt-3">← Kembali ke Glosarium</a>
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <h1 class="h3 fw-bold text-center mb-3">Format Kode Produksi</h1>
+        <p class="text-center text-muted mb-4">Struktur: <strong>X AA BB CC</strong><span class="text-muted">[ -J ]</span></p>
+
+        <!-- Visual strip -->
+        <div class="code-tape mb-4">
+          <div class="seg x">X</div>
+          <div class="seg a">A</div>
+          <div class="seg a">A</div>
+          <div class="seg b">B</div>
+          <div class="seg b">B</div>
+          <div class="seg c">C</div>
+          <div class="seg c">C</div>
+          <div class="seg j">-J</div>
+        </div>
+
+        <!-- Legend -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Keterangan</h2>
+            <div class="table-responsive">
+              <table class="table table-sm legend align-middle mb-0">
+                <tbody>
+                  <tr><td>X</td><td>Kode produksi barang (misal: <span class="code-output">WIP0001</span>)</td></tr>
+                  <tr><td>AA</td><td>Kode tahun produksi (2 digit akhir tahun)</td></tr>
+                  <tr><td>BB</td><td>Kode bulan produksi (2 digit bulan)</td></tr>
+                  <tr><td>CC</td><td>Kode tanggal produksi (2 digit tanggal)</td></tr>
+                  <tr><td>-J</td><td>Opsional: akhiran lokasi <strong>Jepara</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generator -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Pembuat Kode Otomatis</h2>
+            <form class="row g-3" onsubmit="event.preventDefault(); buildCode();">
+              <div class="col-md-6">
+                <label for="prodCode" class="form-label">Kode Barang (X)</label>
+                <input type="text" id="prodCode" class="form-control" placeholder="contoh: WIP0001" required>
+              </div>
+              <div class="col-md-6">
+                <label for="prodDate" class="form-label">Tanggal Produksi</label>
+                <input type="date" id="prodDate" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="lokasi" class="form-label">Lokasi</label>
+                <select id="lokasi" class="form-select">
+                  <option value="">Klaten (tanpa suffix)</option>
+                  <option value="-J">Jepara (tambah -J)</option>
+                </select>
+              </div>
+              <div class="col-md-6 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Generate</button>
+                <button type="button" class="btn btn-outline-secondary ms-2" onclick="copyOut()">Copy</button>
+              </div>
+            </form>
+            <div class="mt-3">
+              <div class="hint mb-1">Hasil kode:</div>
+              <div id="outCode" class="code-output fs-5 border rounded p-2 bg-light">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Examples -->
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Contoh Penulisan</h2>
+            <p class="mb-2">Hasil produksi <em>Spike Cover Air Vent</em> pada <strong>16 Oktober 2024</strong>:</p>
+            <ul class="mb-0">
+              <li>Klaten: <span class="code-output">WIP0001<span class="text-muted">24 10 16</span></span> → <span class="code-output">WIP0001241016</span></li>
+              <li>Jepara: <span class="code-output">WIP0001241016-J</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-center text-muted mt-4">Simpan file ini sebagai <span class="kbd">index.html</span> di repository GitHub Pages untuk dipublikasikan.</p>
+      </div>
+    </div>
   </div>
+
+  <script>
+    function pad2(n){return n.toString().padStart(2,'0')}
+    function buildCode(){
+      const x = (document.getElementById('prodCode').value || '').trim();
+      const d = document.getElementById('prodDate').value;
+      const suf = document.getElementById('lokasi').value || '';
+      if(!x || !d){ document.getElementById('outCode').textContent = 'Lengkapi data'; return; }
+      const dt = new Date(d);
+      const yy = pad2(dt.getFullYear() % 100);
+      const mm = pad2(dt.getMonth()+1);
+      const dd = pad2(dt.getDate());
+      const code = `${x}${yy}${mm}${dd}${suf}`;
+      document.getElementById('outCode').textContent = code;
+    }
+    function copyOut(){
+      const el = document.getElementById('outCode');
+      const text = el.textContent.trim();
+      if(!text || text==='—'){return}
+      navigator.clipboard.writeText(text).then(()=>{
+        el.classList.add('border-success');
+        setTimeout(()=>el.classList.remove('border-success'), 800);
+      });
+    }
+  </script>
 </body>
 </html>
