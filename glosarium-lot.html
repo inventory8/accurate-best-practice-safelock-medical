@@ -140,6 +140,17 @@
         setTimeout(()=>el.classList.remove('border-success'), 800);
       });
     }
+<script>
+    function filterTable(inputId, tableId) {
+      const input = document.getElementById(inputId);
+      const filter = input.value.toLowerCase();
+      const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    }
   </script>
+   <a href="index.html" class="btn btn-outline-primary mt-3">← Kembali ke Glosarium</a>
 </body>
 </html>
